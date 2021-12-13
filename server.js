@@ -1,9 +1,11 @@
 import express from "express"
 import { MongoClient } from "mongodb";
 import Cors from "cors"
+import dotenv from "dotenv";
 
 
 //App Config
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8001;
 
@@ -15,12 +17,6 @@ app.use(express.json())
 app.use(Cors())
 
 //DB config
-// mongoose.connect(MONGO_URL, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-// })
-
 async function createConnect() {
     const client = new MongoClient(MONGO_URL);
     await client.connect();
